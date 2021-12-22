@@ -1,5 +1,6 @@
-# AMLBio_2021
-* A highly modular machine learning workflow for optimization and prediction of biological systems
+# AMLBio
+* SI_A versatile active learning workflow for optimization of genetic and metabolic networks
+
 
 ## Full Performance Can Be Achieved On Google Colab Online
 * [Optimization NoteBook](https://colab.research.google.com/github/AMLBio/AMLBio_2021/blob/master/AMLBio_2021_Optimization_Notebook_vDev.ipynb)
