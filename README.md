@@ -1,5 +1,5 @@
 # AMLBio
-* SI_A versatile active learning workflow for optimization of genetic and metabolic networks
+* A versatile active learning workflow for optimization of genetic and metabolic networks
 
 
 ## Full Performance Can Be Achieved On Google Colab Online
