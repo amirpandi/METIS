@@ -1,4 +1,4 @@
-# AMLBio
+# METIS (a.k.a. AMLBio)
 * A versatile active learning workflow for optimization of genetic and metabolic networks
 
 
