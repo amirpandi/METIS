@@ -535,7 +535,7 @@ def put_volumes_to_384_wells(volumes_array, starting_well='A1', vertical=False, 
         named_volumes['well_name'] = names
 
     # notice that this function output two value
-    return all_dataframe, named_volumes
+    return named_volumes, all_dataframe
 
 def put_volumes_to_96_wells(volumes_array, starting_well='A1', vertical=False, make_csv=False):
     """Make a dataframe as a 96 well plate for each metabolite
@@ -609,7 +609,7 @@ def put_volumes_to_96_wells(volumes_array, starting_well='A1', vertical=False, m
         named_volumes['well_name'] = names
 
     # notice that this function output two value
-    return all_dataframe, named_volumes
+    return named_volumes, all_dataframe
 
 
 # make source to destination dataframe for ECHO machine
@@ -619,7 +619,7 @@ def source_to_destination(named_volumes, desired_order=None, reset_index=True, c
     Parameters
     ----------
     named_volume : 
-         second output of put_volumes_to_384_wells or put_volumes_to_96_wells function
+         first output of put_volumes_to_384_wells or put_volumes_to_96_wells function
         
     Returns
     -------
