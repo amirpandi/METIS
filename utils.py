@@ -656,22 +656,42 @@ def source_to_destination(named_volumes, desired_order=None, reset_index=True, c
     return all_sources, aggregated
 
 
-def put_volumes_to_wells(data, plate_384_well=True, vertical=True, triplicate=False, starting_well='A1', make_csv=False):
+def put_volumes_to_wells(volumes_array, plate_384_well=True, vertical=True, triplicate=False, starting_well='A1', make_csv=False):
+    """it's a helper function for put_volumes_to_96_wells and put_volumes_to_384_wells that take care of creaating triplicate
+        
+    Parameters
+    ----------
+    volumes_array : 
+        a dataframe with columns are component, each row vol of that components (e.g. volumes.csv) 
+        
+    starting_well : 'A1'
+        name of the well in 96 well plate that you want to start filling
+    
+    vertical:
+        if True it will fill the plate column by column top down
+        if False it will fill the plate row by row left to right
+        
+    Returns
+    -------
+    
+    named_volumes:
+        one separate dataframe that add well name to volume dataframe
+    """
     if plate_384_well:
         if triplicate == False:
-            intermediate, _ = put_volumes_to_384_wells(data, starting_well=starting_well, vertical=vertical, make_csv=False)
+            intermediate, _ = put_volumes_to_384_wells(data, starting_well=starting_well, vertical=vertical, make_csv=make_csv)
         else:
-            intermediate_1, _ = put_volumes_to_384_wells(data, starting_well='A1', vertical=True, make_csv=False)
-            intermediate_2, _ = put_volumes_to_384_wells(data, starting_well='A9', vertical=True, make_csv=False)
-            intermediate_3, _ = put_volumes_to_384_wells(data, starting_well='A17', vertical=True, make_csv=False)
+            intermediate_1, _ = put_volumes_to_384_wells(data, starting_well='A1', vertical=True, make_csv=make_csv)
+            intermediate_2, _ = put_volumes_to_384_wells(data, starting_well='A9', vertical=True, make_csv=make_csv)
+            intermediate_3, _ = put_volumes_to_384_wells(data, starting_well='A17', vertical=True, make_csv=make_csv)
             intermediate = pd.concat([intermediate_1, intermediate_2, intermediate_3]).reset_index()
     else:
         if triplicate == False:
-            intermediate, _ = put_volumes_to_96_wells(data, starting_well=starting_well, vertical=vertical, make_csv=False)
+            intermediate, _ = put_volumes_to_96_wells(data, starting_well=starting_well, vertical=vertical, make_csv=make_csv)
         else:
-            intermediate_1, _ = put_volumes_to_96_wells(data, starting_well='A1', vertical=True, make_csv=False)
-            intermediate_2, _ = put_volumes_to_96_wells(data, starting_well='A5', vertical=True, make_csv=False)
-            intermediate_3, _ = put_volumes_to_96_wells(data, starting_well='A9', vertical=True, make_csv=False)
+            intermediate_1, _ = put_volumes_to_96_wells(data, starting_well='A1', vertical=True, make_csv=make_csv)
+            intermediate_2, _ = put_volumes_to_96_wells(data, starting_well='A5', vertical=True, make_csv=make_csv)
+            intermediate_3, _ = put_volumes_to_96_wells(data, starting_well='A9', vertical=True, make_csv=make_csv)
             intermediate = pd.concat([intermediate_1, intermediate_2, intermediate_3]).reset_index()
     
     return intermediate
