@@ -1,4 +1,4 @@
-# METIS (a.k.a. AMLBio)
+# METIS
 * A versatile active learning workflow for optimization of genetic and metabolic networks
 
 ## Full Performance Can Be Achieved On Google Colab Online
