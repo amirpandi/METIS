@@ -11,15 +11,15 @@ def allowed_output(value, reaction_vol_nl=20000, drop_size_nl=100, verbose=0):
 
     Parameters
     ----------
-    value : tuple
+    value: tuple
         (low, high, stock concentration)
 
     Returns
     -------
-    calculated_concs :
+    calculated_concs:
         a list of possible concentrations
     
-    calculated_vols :
+    calculated_vols:
         a list of possible volumes
     """
 
@@ -46,18 +46,18 @@ def allowed_output(value, reaction_vol_nl=20000, drop_size_nl=100, verbose=0):
 
 
 def percentage_possible(data, threshold=40):
-    """Based on threshold volumes calculate how many combinations of all metabolite is possible to make
+    """Based on threshold volume, it calculates how many combinations of all metabolite is possible to make
 
     Parameters
     ----------
-    data : dict
+    data: dict
         {'meatbolite name':[possible volumes], ...}
         
     Returns
     -------
-    percentage possible : float    
-    total : int
-        total number of combination (includes forbidden one)
+    percentage possible: float    
+    total: int
+        total number of combinations (includes forbidden one)
     """
     lists = list(data.values())
 
@@ -77,14 +77,14 @@ def find_stock(conc_values, conc_stocks, this_value):
 
     Parameters
     ----------
-    conc_values : list
+    conc_values: list
         a list of all possible concentration
         
-    conc_stocks : list
+    conc_stocks: list
         a list of all stocks concentration
         
-    this_value : float, int
-        concentration value that we find to find it's stock
+    this_value: float, int
+        concentration value that we find to find its stock
         
     Returns
     -------
@@ -114,13 +114,13 @@ def random_combination_generator(concentrations_limits, number_of_combination=10
 
     Parameters
     ----------
-    concentrations_limits : dict
+    concentrations_limits: dict
         {'name of metabolite': {'Conc_Min': #, 'Conc_Max': #, 'Conc_Values': #, 'Conc_Stock': #, 'Alternatives': #}, ...}
         
     Returns
     -------
-    data : pandas.DataFrame
-        a dataframe as consist of number_of_combination of random combinations
+    data: pandas.DataFrame
+        a dataframe as consists of number_of_combination of random combinations
     """
     
     # generating random combinations
@@ -237,12 +237,12 @@ def concentration_to_volume(concentrations, concentrations_limits, reaction_mixt
 
     Parameters
     ----------
-    concentrations : pandas.DataFrame
+    concentrations: pandas.DataFrame
         random_combination_generator output
     
     Returns
     -------
-    data : pandas.DataFrame
+    data: pandas.DataFrame
         a dataframe same as input in shape but volumes data
     """
 
@@ -268,7 +268,7 @@ def concentration_to_volume(concentrations, concentrations_limits, reaction_mixt
     data['water'] = reaction_mixture_vol_nl - data.sum(axis=1)
 
     # for low stock concentration that is not possible to make, raise an error
-    # stock conc should set in a way that dont raise this error to avoid further debugging
+    # stock conc should be set in a way that doesn't raise this error to avoid further debugging
     if check_water and not all(data['water'] >= 0): raise Exception("Oops, too concentrated combination!")
 
     # add alternative
@@ -313,13 +313,13 @@ def day_finder(file, file_format='csv'):
 
     Parameters
     ----------
-    file : 
-        for now it can only be 'Results'
+    file: 
+        for now, it can only be 'Results'
         
     Returns
     -------
-    i : int
-        the first notcompleted day
+    i: int
+        the first not completed day
     """
     i = 1
     while True:
@@ -334,10 +334,10 @@ def result_preprocess(day, desired_cols, range=20):
         
     Parameters
     ----------
-    day : 
+    day: 
         Results_day.csv
     
-    desired_cols :
+    desired_cols:
         name of columns that you want from the results file
         
     Returns
@@ -349,7 +349,7 @@ def result_preprocess(day, desired_cols, range=20):
     data_specials:
         other data
     label_specials:
-        other label
+        other labels
     """
     results = pd.read_csv('Results_{}.csv'.format(day, day))
 
@@ -369,16 +369,16 @@ def check_repetitive(combination, df_main):
         
     Parameters
     ----------
-    combination : 
+    combination: 
         combinations that want to be checked
     
-    df_main : pandas.DataFrame
+    df_main: pandas.DataFrame
         source dataframe
         
     Returns
     -------
     boolean:
-        True: it exist in df_main
+        True: it exists in df_main
         False: it's not
     """
     comparison_df = df_main.merge(combination, indicator=True, how='outer')
@@ -400,27 +400,27 @@ def bayesian_optimization(regressors_list,
         
     Parameters
     ----------
-    regressors_list : 
+    regressors_list: 
         a list consists of more than one regressor that has .fit and .predict feature
     
-    data : pandas.DataFrame
+    data: pandas.DataFrame
         all previous day data
 
-    label : pandas.DataFrame
+    label: pandas.DataFrame
         all previous day label
         
-    exploitation : 1
-        coeficient of focus on higher yield query
+    exploitation: 1
+        coefficient of focus on higher yield query
     
-    exploration : 1
-        coefficient of focus on more informative query
+    exploration: 1
+        coefficient of focus on a more informative query
         
-    test_size : 100
+    test_size: 100
         output combinations number
         
-    pool_size : 100000
-        how many random combinations to ask from regressor list each round
-        caution: this parameter highly affect executions time
+    pool_size: 100000
+        how many random combinations to ask from the regressor list each round
+        caution: this parameter highly affects executions time
         
     Returns
     -------
@@ -448,7 +448,7 @@ def bayesian_optimization(regressors_list,
     df_1['UCB'] = exploitation * df_1['mean_vote'] + exploration * df_1['regressors_std']
     df_1 = df_1.sort_values(['UCB'], ascending=False)
 
-    # check to don`t make repeated combination but it is not likely
+    # check to don`t make repeated combinations, but it is not likely
 
     chosen_combinations = pd.DataFrame(columns=desired_cols)
     num = 0
@@ -468,23 +468,23 @@ def put_volumes_to_384_wells(volumes_array, starting_well='A1', vertical=False, 
         
     Parameters
     ----------
-    volumes_array : 
-        a dataframe with columns are component, each row vol of that components (e.g. volumes.csv) 
+    volumes_array: 
+        a dataframe with columns are component, each row vol of that component (e.g. volumes.csv) 
         
-    starting_well : 'A1'
-        name of the well in 384 well plate that you want to start filling
+    starting_well: 'A1'
+        name of the well in 384 well plates that you want to start filling
     
     vertical:
-        if True it will fill the plate column by column top down
-        if False it will fill the plate row by row left to right
+        if True, it will fill the plate column by column top down
+        if False, it will fill the plate row by row, left to right
         
     Returns
     -------
     all_dataframe:
-        a list consists of one dataframe for each of metabolite that shows appropriate 384 well plate
+        a list consists of one dataframe for each metabolite that shows appropriate 384 well plate
         
     named_volumes:
-        one separate dataframe that add well name to volume dataframe
+        one separate dataframe that adds well name to volume dataframe
     """
     if len(volumes_array) > 384: raise ValueError
 
@@ -542,23 +542,23 @@ def put_volumes_to_96_wells(volumes_array, starting_well='A1', vertical=False, m
         
     Parameters
     ----------
-    volumes_array : 
-        a dataframe with columns are component, each row vol of that components (e.g. volumes.csv) 
+    volumes_array: 
+        a dataframe with columns are component, each row vol of that component (e.g. volumes.csv) 
         
-    starting_well : 'A1'
-        name of the well in 96 well plate that you want to start filling
+    starting_well: 'A1'
+        name of the well in 96 well plates that you want to start filling
     
     vertical:
-        if True it will fill the plate column by column top down
-        if False it will fill the plate row by row left to right
+        if True, it will fill the plate column by column top down
+        if False, it will fill the plate row by row, left to right
         
     Returns
     -------
     all_dataframe:
-        a list consists of one dataframe for each of metabolite that shows appropriate 384 well plate
+        a list consists of one dataframe for each metabolite that shows appropriate 384 well plate
         
     named_volumes:
-        one separate dataframe that add well name to volume dataframe
+        one separate dataframe that adds well name to volume dataframe
     """
     if len(volumes_array) > 96: raise ValueError
 
@@ -618,7 +618,7 @@ def source_to_destination(named_volumes, desired_order=None, reset_index=True, c
         
     Parameters
     ----------
-    named_volume : 
+    named_volume: 
          first output of put_volumes_to_384_wells or put_volumes_to_96_wells function
         
     Returns
@@ -627,7 +627,7 @@ def source_to_destination(named_volumes, desired_order=None, reset_index=True, c
         separate dataframe for each metabolite that appended in a dict
     
     aggregated:
-        aggregated all_sources to one csv file by your desired order
+        aggregated all_sources to one CSV file by your desired order
     """
     all_sources = {}
     for metabolite_name in named_volumes.drop(columns=['well_name']):
@@ -661,21 +661,21 @@ def put_volumes_to_wells(volumes_array, plate_384_well=True, vertical=True, trip
         
     Parameters
     ----------
-    volumes_array : 
-        a dataframe with columns are component, each row vol of that components (e.g. volumes.csv) 
+    volumes_array: 
+        a dataframe with columns are component, each row vol of that component (e.g. volumes.csv) 
         
-    starting_well : 'A1'
-        name of the well in 96 well plate that you want to start filling
+    starting_well: 'A1'
+        name of the well in 96 well plates that you want to start filling
     
     vertical:
-        if True it will fill the plate column by column top down
-        if False it will fill the plate row by row left to right
+        if True, it will fill the plate column by column top down
+        if False, it will fill the plate row by row, left to right
         
     Returns
     -------
 
     named_volumes:
-        one separate dataframe that add well name to volume dataframe
+        one separate dataframe that adds well name to volume dataframe
     """
     if plate_384_well:
         if triplicate == False:
