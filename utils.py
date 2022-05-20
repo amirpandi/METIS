@@ -395,7 +395,8 @@ def bayesian_optimization(regressors_list,
                           df_main,
                           reaction_vol_nl=20000, max_nl=13200, drop_size_nl=100,
                           exploitation=1, exploration=1, test_size=100, pool_size=100000, verbose=0, day=1,
-                          days_range=[20, 20, 20, 20, 20, 20, 20, 20, 20, 20]):
+                          days_range=[20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
+                          batch_ucb=False):
     """Main bayesian optimization function
         
     Parameters
@@ -426,6 +427,11 @@ def bayesian_optimization(regressors_list,
     -------
     chosen_combinations: pandas.DataFrame
         combinations that expected to improve yield
+
+    if batch_ucb == True
+    Returns
+    -------
+    best sample based on ucb: pandas.Series, best sample's expected value: float
     """
     # first fit training data on our models
     for regressor in regressors_list:
@@ -448,6 +454,8 @@ def bayesian_optimization(regressors_list,
     df_1['UCB'] = exploitation * df_1['mean_vote'] + exploration * df_1['regressors_std']
     df_1 = df_1.sort_values(['UCB'], ascending=False)
 
+    if batch_ucb:
+        return df_1[final_order].iloc[0:1, :], df_1['mean_vote'].values[0]
     # check to don`t make repeated combinations, but it is not likely
 
     chosen_combinations = pd.DataFrame(columns=desired_cols)
@@ -461,6 +469,65 @@ def bayesian_optimization(regressors_list,
             break
 
     return chosen_combinations[final_order]
+
+
+# Batch UCB on top of bayesian optimizationdef batch_ucb(regressors_list,
+def batch_ucb(regressors_list,
+                data, label,
+                concentrations_limits,
+                final_order,
+                df_main,
+                reaction_vol_nl=20000, max_nl=13200, drop_size_nl=100,
+                exploitation=1, exploration=1, test_size=100, pool_size=100000, verbose=0, day=1,
+                days_range=[20, 20, 20, 20, 20, 20, 20, 20, 20, 20]):
+    """Batch UCB on top of bayesian optimization function
+        
+    Parameters
+    ----------
+    regressors_list: 
+        a list consists of more than one regressor that has .fit and .predict feature
+    
+    data: pandas.DataFrame
+        all previous day data
+
+    label: pandas.DataFrame
+        all previous day label
+        
+    exploitation: 1
+        coefficient of focus on higher yield query
+    
+    exploration: 1
+        coefficient of focus on a more informative query
+        
+    test_size: 100
+        output combinations number
+        
+    pool_size: 100000
+        how many random combinations to ask from the regressor list each round
+        caution: this parameter highly affects executions time
+        
+    Returns
+    -------
+    chosen_combinations: pandas.DataFrame
+        combinations that expected to improve yield
+    """
+    
+    final_samples = []
+
+    for i in range(test_size):
+        sample, expected_value = bayesian_optimization(regressors_list, data, label, concentrations_limits,
+                                            final_order=final_order,
+                                            df_main = df_main,
+                                            reaction_vol_nl=reaction_vol_nl, max_nl=max_nl,
+                                            drop_size_nl=drop_size_nl,
+                                            exploitation=exploitation, exploration=exploration, test_size=test_size, pool_size=pool_size, verbose=0, day=day, days_range = days_range,
+                                            batch_ucb=True)
+        final_samples.append(sample)
+        data = pd.concat([data, sample], axis=0).reset_index(drop=True)
+        label = pd.concat([label, pd.DataFrame({'yield': [expected_value]})], axis=0).reset_index(drop=True)
+
+    return pd.concat(final_samples)    
+
 
 # ECHO functions
 def put_volumes_to_384_wells(volumes_array, starting_well='A1', vertical=False, make_csv=False):
