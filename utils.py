@@ -471,7 +471,7 @@ def bayesian_optimization(regressors_list,
     return chosen_combinations[final_order]
 
 
-# Batch UCB on top of bayesian optimizationdef batch_ucb(regressors_list,
+# Batch UCB on top of bayesian optimization
 def batch_ucb(regressors_list,
                 data, label,
                 concentrations_limits,
