@@ -6,9 +6,10 @@
 * [Prediction NoteBook](https://colab.research.google.com/github/amirpandi/METIS/blob/main/METIS_Prediction_Notebook.ipynb)
 
 ## Guide
-* Apart from two notebooks above that can be tailored for custom applications, in the Applications folder all example notebooks used in this work along with their data (combinations and yields) are provided. 
+* Apart from the two Google Colab notebooks above that can be tailored for custom applications. In the Applications folder, all example notebooks used in this work along with their data (combinations and yields) are provided. 
 
-* To tailor METIS for a costum application, check Fig. 2 of the above paper, and a very detailed step by step guide in Supplementary Note 2 and Supplementary Fig. 4-6.
+* To tailor METIS for a custom application, check Fig. 2 of the above paper (see below), and a very detailed step-by-step guide in Supplementary Note 2 and Supplementary Fig. 4-6.
+
 
 ![Fig2  METIS](https://user-images.githubusercontent.com/55136474/173783016-43c756bd-0f14-4a66-b00e-743660e4bdba.png)
 
