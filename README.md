@@ -13,7 +13,7 @@
 
 
 ## Guide
-* Apart from the two Google Colab notebooks above that can be tailored for custom applications. All example notebooks used in this work along with their data (combinations and yields) are provided in the Applications folder of the METIS repository. 
+* Apart from the two Google Colab notebooks above that can be tailored for custom applications, all example notebooks used in this work along with their data (combinations and yields) are provided in the Examples/Applications folder of the METIS repository. 
 
 * To tailor METIS for a custom application, check Fig. 2 of the above paper (see below), and a detailed step-by-step guide in Supplementary Note 2 and Supplementary Fig. 4-6.
 
