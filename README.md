@@ -16,7 +16,7 @@
 
 
 ## Examples
-This folder contains METIS applications as well as other scripts used in the associated paper.
+This folder contains METIS applications as well as other scripts used in the paper:
 
 ## Folders Description:
 ### Cell_Free_System:
