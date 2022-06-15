@@ -3,7 +3,7 @@
 
 
 
-## Full Performance Can Be Achieved On Google Colab Online
+## Full Performance Can Be Achieved On Google Colab Notebooks:
 * [Optimization NoteBook](https://colab.research.google.com/github/amirpandi/METIS/blob/main/METIS_Optimization_Notebook.ipynb)
 * [Prediction NoteBook](https://colab.research.google.com/github/amirpandi/METIS/blob/main/METIS_Prediction_Notebook.ipynb)
 
