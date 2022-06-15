@@ -2,6 +2,9 @@
 * Publication: Pandi A*‡, Diehl C*, Kharrazi AY, Faure L, Scholz SA, Nattermann M, Adam D, Chapin N, Foroughijabbari Y, Moritz C, Paczia N, NS Cortina, Faulon J-L, Erb TJ‡. A versatile active learning workflow for optimization of genetic and metabolic networks. bioRxiv (2021). 10.1101/2021.12.28.474323
 
 
+![AMLBio_graphAbs](https://user-images.githubusercontent.com/55136474/173792850-edeb4433-2f25-4c3f-b87e-aeec9708aa13.png)
+
+
 
 ## Full Performance Can Be Achieved On Google Colab Notebooks:
 * [Optimization NoteBook](https://colab.research.google.com/github/amirpandi/METIS/blob/main/METIS_Optimization_Notebook.ipynb)
