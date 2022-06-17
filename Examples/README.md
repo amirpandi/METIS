@@ -18,7 +18,7 @@ This folder contains METIS applications as well as other scripts used in the ass
 * Data: Data for 10 Days of active learning optimization (Fig. 3c) and 2 rounds of "20 Most Informative" experiments (Fig. 3k).
 * Codes: METIS optimization notebook. 
 
-### PURE (Cell-Free System:
+### PURE (Cell-Free System):
 * Data: Data for 10 Days of simulation (Supplementary Fig. 19).
 * Codes: METIS prediction notebook.
 * 
