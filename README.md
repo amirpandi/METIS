@@ -2,7 +2,8 @@
 * Publication: Pandi A*‡, Diehl C*, Kharrazi AY, Faure L, Scholz SA, Nattermann M, Adam D, Chapin N, Foroughijabbari Y, Moritz C, Paczia N, NS Cortina, Faulon J-L, Erb TJ‡. A versatile active learning workflow for optimization of genetic and metabolic networks. bioRxiv (2021). 10.1101/2021.12.28.474323
 
 
-![AMLBio_graphAbs](https://user-images.githubusercontent.com/55136474/173792850-edeb4433-2f25-4c3f-b87e-aeec9708aa13.png)
+![METIS_graphAbs](https://user-images.githubusercontent.com/55136474/174248711-66d5eccd-db31-4d1b-a444-024d24ca5543.png)
+
 
 
 
@@ -44,7 +45,7 @@ This folder contains METIS applications as well as other scripts used in the pap
 * Data: Data for 10 Days of active learning optimization (Fig. 3c) and 2 rounds of "20 Most Informative" experiments (Fig. 3k).
 * Codes: METIS optimization notebook. 
 
-### PURE (Cell-Free System:
+### PURE (Cell-Free System):
 * Data: Data for 10 Days of simulation (Supplementary Fig. 19).
 * Codes: METIS prediction notebook.
 * 
