@@ -1,0 +1,2 @@
+## Open the Notebook in Colab:
+* [METIS_Optimization_Notebook_LacI](https://colab.research.google.com/github/amirpandi/METIS/blob/main/Examples/LacI/20_Most_Informative/Code/BBO_Funcv3.1_NotebookvLacI_20_Informative.ipynb)
