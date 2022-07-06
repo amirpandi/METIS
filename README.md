@@ -48,7 +48,7 @@ This folder contains METIS applications as well as other scripts used in the pap
 ### PURE (Cell-Free System):
 * Data: Data for 10 Days of simulation (Supplementary Fig. 19).
 * Codes: METIS prediction notebook.
-* 
+
 ### TTU (Transcription & Translation Unit):
 * Data: Data for 4 Days of active learning optimization (Fig. 4c) and 2 rounds of "20 Most Informative" experiments (Fig. 4e).
 * Codes: METIS optimization notebook. 
