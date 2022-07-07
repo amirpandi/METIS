@@ -1,6 +1,6 @@
 # METIS
 * Publication: 
-Pandi A*‡, Diehl C*, Kharrazi AY, Scholz SA, Bobkova E, Faure L, Nattermann M, Adam D, Chapin N, Foroughijabbari Y, Moritz C, Paczia N, NS Cortina, Faulon J-L, Erb TJ‡. A versatile active learning workflow for optimization of genetic and metabolic networks. Nature Communications (2022), https://www.nature.com/articles/s41467-022-31245-z
+Pandi A*‡, Diehl C*, Yazdizadeh Kharrazi A, Scholz SA, Bobkova E, Faure L, Nattermann M, Adam D, Chapin N, Foroughijabbari Y, Moritz C, Paczia N, NS Cortina, Faulon J-L, Erb TJ‡. A versatile active learning workflow for optimization of genetic and metabolic networks. Nature Communications (2022), https://www.nature.com/articles/s41467-022-31245-z
 
 
 ![METIS_graphAbs](https://user-images.githubusercontent.com/55136474/174248711-66d5eccd-db31-4d1b-a444-024d24ca5543.png)
