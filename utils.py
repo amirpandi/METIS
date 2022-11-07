@@ -747,17 +747,17 @@ def put_volumes_to_wells(volumes_array, plate_384_well=True, vertical=True, trip
         if triplicate == False:
             intermediate, _ = put_volumes_to_384_wells(volumes_array, starting_well=starting_well, vertical=vertical, make_csv=make_csv)
         else:
-            intermediate_1, _ = put_volumes_to_384_wells(volumes_array, starting_well='A1', vertical=True, make_csv=make_csv)
-            intermediate_2, _ = put_volumes_to_384_wells(volumes_array, starting_well='A9', vertical=True, make_csv=make_csv)
-            intermediate_3, _ = put_volumes_to_384_wells(volumes_array, starting_well='A17', vertical=True, make_csv=make_csv)
+            intermediate_1, _ = put_volumes_to_384_wells(volumes_array, starting_well='A1', vertical=vertical, make_csv=make_csv)
+            intermediate_2, _ = put_volumes_to_384_wells(volumes_array, starting_well='A9', vertical=vertical, make_csv=make_csv)
+            intermediate_3, _ = put_volumes_to_384_wells(volumes_array, starting_well='A17', vertical=vertical, make_csv=make_csv)
             intermediate = pd.concat([intermediate_1, intermediate_2, intermediate_3]).reset_index(drop=True)
     else:
         if triplicate == False:
             intermediate, _ = put_volumes_to_96_wells(volumes_array, starting_well=starting_well, vertical=vertical, make_csv=make_csv)
         else:
-            intermediate_1, _ = put_volumes_to_96_wells(volumes_array, starting_well='A1', vertical=True, make_csv=make_csv)
-            intermediate_2, _ = put_volumes_to_96_wells(volumes_array, starting_well='A5', vertical=True, make_csv=make_csv)
-            intermediate_3, _ = put_volumes_to_96_wells(volumes_array, starting_well='A9', vertical=True, make_csv=make_csv)
+            intermediate_1, _ = put_volumes_to_96_wells(volumes_array, starting_well='A1', vertical=vertical, make_csv=make_csv)
+            intermediate_2, _ = put_volumes_to_96_wells(volumes_array, starting_well='A5', vertical=vertical, make_csv=make_csv)
+            intermediate_3, _ = put_volumes_to_96_wells(volumes_array, starting_well='A9', vertical=vertical, make_csv=make_csv)
             intermediate = pd.concat([intermediate_1, intermediate_2, intermediate_3]).reset_index(drop=True)
     
     return intermediate
